@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+15&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>weather app</title>
+</head>
+<body>
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+          <button onclick="Close()" class="close">&times;</button>
+          <div id="modal-details"></div>
+        </div>
+    </div>
+    <div id="top">
+        <h1 id="weather">Weather</h1>
+        <form autocomplete="off" action="/action_page.php" id="countries">
+            <div class="autocomplete" style="width:300px;">
+                <input id="myInput" type="text" name="myCountry" placeholder="Country">
+            </div>
+            <input type="submit" value="Change">
+        </form>
+    </div>
+    <div id="day-holder">
+        <div class="days" id="first">
+            <h1>Today</h1>
+            <img src="pics/3258157.png" alt="weather pic">
+            <p>Temperature: <span id="tempNum">55</span>°C</p>
+            <p>Humidity: <span id="humNum">4</span>%</p>
+            <button onclick="Day1More()">Show More</button>
+        </div>
+        <div class="days">
+            <h1>Next Day</h1>
+            <img src="pics/3258157.png" alt="weather pic">
+            <p>Temperature: <span id="tempNum">55</span>°C</p>
+            <p>Humidity: <span id="humNum">4</span>%</p>
+            <button onclick="Day2More()">Show More</button>
+        </div>
+        <div class="days">
+            <h1>Day 3</h1>
+            <img src="pics/3258157.png" alt="weather pic">
+            <p>Temperature: <span id="tempNum">55</span>°C</p>
+            <p>Humidity: <span id="humNum">4</span>%</p>
+            <button onclick="Day3More()">Show More</button>
+        </div>
+    </div>
+    <script src="papca.js"></script>
+     <script>
+autocomplete(document.getElementById("myInput"), countries);
+</script> 
+</body>
+</html>

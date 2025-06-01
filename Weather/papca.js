@@ -160,3 +160,46 @@ function Day3More() {
 function Close(){
       modal.classList.add('hidden');
 }
+
+//⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠛⠛⠲⢦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣄⠀⠀⠀⠈⠳⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⠴⠒⠒⠒⠒⠒⠻⢦⡀⠀⠀⠀⠈⠻⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢧⣀⠀⠀⠀⠀⠀⠀⣀⣙⣷⣤⣀⣀⣀⣈⣳⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⣳⣶⡶⠟⠛⠋⠉⠉⠉⠉⠉⠉⠉⠛⠻⠷⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⣦⡀⠀⠀⠀⠀⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣦⡀⠀⠀⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣄⠀⠀⠀
+//⠀⠀⠀⠀⣀⠀⠀⢠⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⡆⠀⠀
+//⢀⡀⠀⣾⣿⣆⢠⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣶⣦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣴⣿⡄⠀
+//⣾⣿⣶⣽⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣷⣦⣤⣀⣠⣤⣶⣾⣿⣿⣿⣿⣿⣧⠀
+//⠿⠿⠿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡽⠉⠛⠛⢿⣿⣿⣿⣿⣿⡿⠿⠟⠻⡟⠉⠉⣿⠀
+//⠀⠀⣾⣿⡿⢿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⣿⣿⠂⣹⡵⣿⣷⠀⠀⠀⣽⠀⠀⣿⡇
+//⠀⠀⠈⠋⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢳⡀⠀⠀⢀⣠⠞⠋⠛⠿⣄⡀⢀⡼⠃⠀⠀⣿⠁
+//⠀⠀⠀⠀⠀⠸⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢙⡶⠋⠀⠀⠀⠀⠀⠈⠙⢧⡀⠀⠀⢠⡿⠀
+//⠀⠀⠀⠀⠀⠀⢻⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣯⣀⡀⠀⠀⠀⠀⠀⠀⠀⠈⢳⡄⠀⣼⠃⠀
+//⠀⠀⠀⠀⠀⠀⠈⢿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢯⡉⠙⠓⠒⠒⠒⠶⢶⡶⠶⠿⣾⠏⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠈⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣄⠀⠀⠀⣠⠴⠋⠀⢠⣾⠋⠀⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢳⡤⠞⠁⠀⣀⣴⠟⠁⠀⠀⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠷⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⠾⠋⠁⠀⠀⠀⠀⠀⠀
+//⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠷⢶⣤⣤⣤⣤⣤⣤⣤⡴⠶⠟⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+//MATEEEEE!!!!!!!!!!!!
+//mielott probalkozni kezdel inditsd el a backendet
+//https://github.com/SzGeryX/weather-backend readme-ben minden le van irva :), apikulcsot atkuldtem dc-n
+//igy mukodik:
+fetch("http://127.0.0.1:8000/today/", { //erre az url-re kuldod a kerest, amivel neked foglalkozni kell az a "today/"-re es a "forecast/"-re vegzodo
+  method: "POST",
+  body: JSON.stringify({
+    //ide irod azt amit el akarsz kuldeni a servernek mint informacio, ha "today/"-re akarsz akkor csak egy "location" kell, ha a "forecast/"-re akkor kell egy "location" es egy "days"(hany napra kered az elorejelzest) is 
+    location: "Debrecen" 
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+})
+  .then(res => res.json())
+  .then((data) => {
+    //ide irod, hogy mit szeretnel az informacioval baszni amit a server visszakuldott 
+    console.log(data)
+    //ha egyesevel akarod az informaciokat kiszedni akkor az igy nez ki
+    console.log(data.moonrise)
+  })

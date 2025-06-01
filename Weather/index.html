@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+15&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>weather app</title>
+    <title>Időjárás</title>
 </head>
 <body>
     <div id="modal" class="modal hidden">
@@ -17,35 +17,35 @@
         </div>
     </div>
     <div id="top">
-        <h1 id="weather">Weather</h1>
+        <h1 id="weather">Időjárás</h1>
         <div id="countries" >
             <div class="autocomplete" style="width:300px;">
                 <input id="myInput" type="text" name="myCountry" placeholder="Location">
             </div>
-            <button id="changeBtn">Change</button>
+            <button id="changeBtn">🔍</button>
         </div>
     </div>
     <div id="day-holder">
         <div class="days" id="first">
-            <h1>Today</h1>
-            <img src="pics/3258157.png" alt="weather pic">
-            <p>Temperature: <span id="tempNum">55</span>°C</p>
-            <p>Humidity: <span id="humNum">4</span>%</p>
-            <button onclick="Day1More()">Show More</button>
+            <h1>Ma</h1>
+            <img id="firstPic" src="pics/3258157.png" alt="weather pic">
+            <p>Hőmérséklet: <span id="tempNum1">55</span>°C</p>
+            <p>Csapadék Valószínűség: <span id="humNum1">4</span>%</p>
+            <button onclick="Day1More()">Részletek</button>
         </div>
         <div class="days">
-            <h1>Next Day</h1>
-            <img src="pics/3258157.png" alt="weather pic">
-            <p>Temperature: <span id="tempNum">55</span>°C</p>
-            <p>Humidity: <span id="humNum">4</span>%</p>
-            <button onclick="Day2More()">Show More</button>
+            <h1>Holnap</h1>
+            <img id="secondPic" src="pics/3258157.png" alt="weather pic">
+            <p>Hőmérséklet: <span id="tempNum2">55</span>°C</p>
+            <p>Csapadék Valószínűség: <span id="humNum2">4</span>%</p>
+            <button onclick="Day2More()">Részletek</button>
         </div>
         <div class="days">
-            <h1>Day 3</h1>
-            <img src="pics/3258157.png" alt="weather pic">
-            <p>Temperature: <span id="tempNum">55</span>°C</p>
-            <p>Humidity: <span id="humNum">4</span>%</p>
-            <button onclick="Day3More()">Show More</button>
+            <h1>Holnapután</h1>
+            <img id="thirdPic" src="pics/3258157.png" alt="weather pic">
+            <p>Hőmérséklet: <span id="tempNum3">55</span>°C</p>
+            <p>Csapadék Valószínűség: <span id="humNum3">4</span>%</p>
+            <button onclick="Day3More()">Részletek</button>
         </div>
     </div>
     <script src="papca.js"></script>

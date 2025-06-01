@@ -2,11 +2,8 @@
   const modalContent = document.getElementById("modal-details")
 
  function autocomplete(inp) {
-  /*the autocomplete function takes two arguments,
-  the text field element and an array of possible autocompleted values:*/
   var currentFocus;
   var arr = []
-  /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
       var a, b, i, val = this.value;
         fetch("http://127.0.0.1:8000/search/", {
@@ -21,36 +18,24 @@
           .then(res => res.json())
           .then((data) => {
             arr = [...data.names]
-            console.log(arr)
           })
           .then(() => {
-      /*close any already open lists of autocompleted values*/
       closeAllLists();
       if (!val) { return false;}
       currentFocus = -1;
-      /*create a DIV element that will contain the items (values):*/
       a = document.createElement("DIV");
       a.setAttribute("id", this.id + "autocomplete-list");
       a.setAttribute("class", "autocomplete-items");
-      /*append the DIV element as a child of the autocomplete container:*/
       this.parentNode.appendChild(a);
-      /*for each item in the array...*/
+
       for (i = 0; i < arr.length; i++) {
-        /*check if the item starts with the same letters as the text field value:*/
         if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-          /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
-          /*make the matching letters bold:*/
           b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
           b.innerHTML += arr[i].substr(val.length);
-          /*insert a input field that will hold the current array item's value:*/
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-          /*execute a function when someone clicks on the item value (DIV element):*/
               b.addEventListener("click", function(e) {
-              /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
-              /*close the list of autocompleted values,
-              (or any other open lists of autocompleted values:*/
               closeAllLists();
           });
           a.appendChild(b);
@@ -60,50 +45,36 @@
           })
         
   });
-  /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function(e) {
       var x = document.getElementById(this.id + "autocomplete-list");
       if (x) x = x.getElementsByTagName("div");
       if (e.keyCode == 40) {
-        /*If the arrow DOWN key is pressed,
-        increase the currentFocus variable:*/
         currentFocus++;
-        /*and and make the current item more visible:*/
         addActive(x);
-      } else if (e.keyCode == 38) { //up
-        /*If the arrow UP key is pressed,
-        decrease the currentFocus variable:*/
+      } else if (e.keyCode == 38) {
         currentFocus--;
-        /*and and make the current item more visible:*/
         addActive(x);
       } else if (e.keyCode == 13) {
-        /*If the ENTER key is pressed, prevent the form from being submitted,*/
         e.preventDefault();
         if (currentFocus > -1) {
-          /*and simulate a click on the "active" item:*/
           if (x) x[currentFocus].click();
         }
       }
   });
   function addActive(x) {
-    /*a function to classify an item as "active":*/
     if (!x) return false;
-    /*start by removing the "active" class on all items:*/
     removeActive(x);
     if (currentFocus >= x.length) currentFocus = 0;
     if (currentFocus < 0) currentFocus = (x.length - 1);
-    /*add class "autocomplete-active":*/
     x[currentFocus].classList.add("autocomplete-active");
   }
   function removeActive(x) {
-    /*a function to remove the "active" class from all autocomplete items:*/
     for (var i = 0; i < x.length; i++) {
       x[i].classList.remove("autocomplete-active");
     }
   }
   function closeAllLists(elmnt) {
-    /*close all autocomplete lists in the document,
-    except the one passed as an argument:*/
+
     var x = document.getElementsByClassName("autocomplete-items");
     for (var i = 0; i < x.length; i++) {
       if (elmnt != x[i] && elmnt != inp) {
@@ -111,51 +82,96 @@
     }
   }
 }
-/*execute a function when someone clicks in the document:*/
 document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
 }
-    // Bezárás háttérre kattintva
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.classList.add('hidden');
       }
     });
 function Day1More() {
-    modalContent.innerHTML = `
-      <h1>Today</h1>
-      <p><u><strong>Avarage temperature 60°C</strong></u></p>
-      <p>Maximum temperature 60°C</p>
-      <p>Minimum temperature 10°C</p>
-      <p>Csoport: </p>
-      <p>Periódus: </p>
-      <p>Kategória: </p>
+  fetch("http://127.0.0.1:8000/today/", { 
+  method: "POST",
+  body: JSON.stringify({
+    location: document.getElementById("myInput").value
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+})
+  .then(res => res.json())
+  .then((data) => {
+      modalContent.innerHTML = `
+      <h1>Ma</h1>
+      <img src="http://${data.condition_img}" alt="weather pic" style="width:150px; height:150px;">
+      <p><u><strong>${data.condition_text}</strong></u></p>
+      <p><strong>Hőmérséklet: ${data.temp}°C</strong></p>
+      <p>Hőérzet: ${data.feelslike}°C</p>
+      <p>Csapadék valószínűsége: ${data.humidity}%</p>
+      <p>Szélsebesség: ${data.windspeed}km/h</p>
+      <p>Napkelte: ${data.sunrise}</p>
+      <p>Napnyugta: ${data.sunset}</p>
       `;
-        modal.classList.remove('hidden');
+  })
+  modal.classList.remove('hidden');
 }
 function Day2More() {
-    modalContent.innerHTML = `
-      <h1>Today</h1>
-      <p><u><strong>Avarage temperature 60°C</strong></u></p>
-      <p>Maximum temperature 60°C</p>
-      <p>Minimum temperature 10°C</p>
-      <p>Csoport: </p>
-      <p>Periódus: </p>
-      <p>Kategória: </p>
+fetch("http://127.0.0.1:8000/forecast/", {
+  method: "POST",
+  body: JSON.stringify({
+    location: document.getElementById("myInput").value,
+    days: 1
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+})
+  .then(res => res.json())
+  .then((data) => {
+      modalContent.innerHTML = `
+      <h1>Holnap</h1>
+      <img src="http://${data.days[0].condition_icon}" alt="weather pic" style="width:150px; height:150px;">
+      <p><u><strong>${data.days[0].condition_text}</strong></u></p>
+      <p><strong>Hőmérséklet: ${data.days[0].mintemp}-${data.days[0].maxtemp}°C</strong></p>
+      <p>Átlagosan: ${data.days[0].avgtemp}°C</p>
+      <p>UV sugárzás ${data.days[0].uv}</p>
+      <p>Csapadék valószínűsége: ${data.days[0].avghumidity}%</p>
+      <p>Szélsebesség: ${data.days[0].maxwind_kph}km/h</p>
+      <p>Napkelte: ${data.days[0].sunrise}</p>
+      <p>Napnyugta: ${data.days[0].sunset}</p>
       `;
+    })
         modal.classList.remove('hidden');
 }
 function Day3More() {
-    modalContent.innerHTML = `
-      <h1>Today</h1>
-      <p><u><strong>Avarage temperature 60°C</strong></u></p>
-      <p>Maximum temperature 60°C</p>
-      <p>Minimum temperature 10°C</p>
-      <p>Csoport: </p>
-      <p>Periódus: </p>
-      <p>Kategória: </p>
+fetch("http://127.0.0.1:8000/forecast/", {
+  method: "POST",
+  body: JSON.stringify({
+    location: document.getElementById("myInput").value,
+    days: 2
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+})
+  .then(res => res.json())
+  .then((data) => {
+      modalContent.innerHTML = `
+      <h1>Holnap</h1>
+      <img src="http://${data.days[1].condition_icon}" alt="weather pic" style="width:150px; height:150px;">
+      <p><u><strong>${data.days[1].condition_text}</strong></u></p>
+      <p><strong>Hőmérséklet: ${data.days[1].mintemp}-${data.days[1].maxtemp}°C</strong></p>
+      <p>Átlagosan: ${data.days[1].avgtemp}°C</p>
+      <p>UV sugárzás: ${data.days[1].uv}</p>
+      <p>Csapadék valószínűsége: ${data.days[1].avghumidity}%</p>
+      <p>Szélsebesség: ${data.days[1].maxwind_kph}km/h</p>
+      <p>Napkelte: ${data.days[1].sunrise}</p>
+      <p>Napnyugta: ${data.days[1].sunset}</p>
       `;
+
+    })
         modal.classList.remove('hidden');
 }
 function Close(){
@@ -202,7 +218,6 @@ fetch("http://127.0.0.1:8000/today/", { //erre az url-re kuldod a kerest, amivel
     //ide irod, hogy mit szeretnel az informacioval baszni amit a server visszakuldott 
     console.log(data)
     //ha egyesevel akarod az informaciokat kiszedni akkor az igy nez ki
-    console.log(data.moonrise)
   })
 
 let changeBtn = document.getElementById("changeBtn")
@@ -222,6 +237,43 @@ fetch("http://127.0.0.1:8000/today/", { //erre az url-re kuldod a kerest, amivel
     //ide irod, hogy mit szeretnel az informacioval baszni amit a server visszakuldott 
     console.log(data)
     //ha egyesevel akarod az informaciokat kiszedni akkor az igy nez ki
-    console.log(data.moonrise)
+  
+    let firstPicEl = document.getElementById("firstPic");
+    firstPicEl.src="http://" + data.condition_img;
+    let tempNum1El = document.getElementById("tempNum1");
+    tempNum1El.innerText = data.temp;
+    let humNum1El = document.getElementById("humNum1");
+    humNum1El.innerText = data.humidity;
+  })
+fetch("http://127.0.0.1:8000/forecast/", { //erre az url-re kuldod a kerest, amivel neked foglalkozni kell az a "today/"-re es a "forecast/"-re vegzodo
+  method: "POST",
+  body: JSON.stringify({
+    //ide irod azt amit el akarsz kuldeni a servernek mint informacio, ha "today/"-re akarsz akkor csak egy "location" kell, ha a "forecast/"-re akkor kell egy "location" es egy "days"(hany napra kered az elorejelzest) is 
+    location: document.getElementById("myInput").value,
+    days: 2
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+})
+  .then(res => res.json())
+  .then((data) => {
+    //ide irod, hogy mit szeretnel az informacioval baszni amit a server visszakuldott 
+    console.log(data)
+    //ha egyesevel akarod az informaciokat kiszedni akkor az igy nez ki
+
+        let secondPicEl = document.getElementById("secondPic");
+        secondPicEl.src="http://" + data.days[0].condition_icon;
+        let tempNum2El = document.getElementById("tempNum2");
+        tempNum2El.innerText = data.days[0].avgtemp;
+        let humNum2El = document.getElementById("humNum2");
+        humNum2El.innerText = data.days[0].avghumidity;
+
+        let thirdPicEl = document.getElementById("thirdPic");
+        thirdPicEl.src="http://" + data.days[1].condition_icon;
+        let tempNum3El = document.getElementById("tempNum3");
+        tempNum3El.innerText = data.days[1].avgtemp;
+        let humNum3El = document.getElementById("humNum3");
+        humNum3El.innerText = data.days[1].avghumidity;
   })
 })

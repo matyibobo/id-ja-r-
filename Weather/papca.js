@@ -9,7 +9,6 @@
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
       var a, b, i, val = this.value;
-      if (val.length > 1) {
         fetch("http://127.0.0.1:8000/search/", {
           method: "POST",
           body: JSON.stringify({
@@ -24,8 +23,7 @@
             arr = [...data.names]
             console.log(arr)
           })
-        
-      }
+          .then(() => {
       /*close any already open lists of autocompleted values*/
       closeAllLists();
       if (!val) { return false;}
@@ -58,6 +56,9 @@
           a.appendChild(b);
         }
       }
+
+          })
+        
   });
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function(e) {
@@ -203,3 +204,24 @@ fetch("http://127.0.0.1:8000/today/", { //erre az url-re kuldod a kerest, amivel
     //ha egyesevel akarod az informaciokat kiszedni akkor az igy nez ki
     console.log(data.moonrise)
   })
+
+let changeBtn = document.getElementById("changeBtn")
+changeBtn.addEventListener("click", () => {
+fetch("http://127.0.0.1:8000/today/", { //erre az url-re kuldod a kerest, amivel neked foglalkozni kell az a "today/"-re es a "forecast/"-re vegzodo
+  method: "POST",
+  body: JSON.stringify({
+    //ide irod azt amit el akarsz kuldeni a servernek mint informacio, ha "today/"-re akarsz akkor csak egy "location" kell, ha a "forecast/"-re akkor kell egy "location" es egy "days"(hany napra kered az elorejelzest) is 
+    location: document.getElementById("myInput").value
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+})
+  .then(res => res.json())
+  .then((data) => {
+    //ide irod, hogy mit szeretnel az informacioval baszni amit a server visszakuldott 
+    console.log(data)
+    //ha egyesevel akarod az informaciokat kiszedni akkor az igy nez ki
+    console.log(data.moonrise)
+  })
+})
